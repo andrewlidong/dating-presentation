@@ -139,7 +139,6 @@
       <!-- Slide 1: Title -->
       <section>
         <h1>Let's Talk About Dating</h1>
-        <p style="font-size: 0.5em; color: #aaa; margin-top: 2em;">West Monroe &bull; 2026</p>
         <aside class="notes">
           So I'm here to talk about dating. [pause] ...JavaScript date libraries.
           Get your minds out of the gutter.
@@ -303,7 +302,40 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
         </aside>
       </section>
 
-      <!-- Slide 8: Comparison Table -->
+      <!-- Slide 8: Temporal API -->
+      <section>
+        <h2>Temporal API</h2>
+        <p><em>"The one you're waiting for"</em></p>
+        <div class="dating-profile">
+          <h3>The Soulmate (Still Moving to Town)</h3>
+          <ul>
+            <li>Status: It's complicated (Stage 3 proposal, not in all browsers yet)</li>
+            <li>Size: 0KB &mdash; it's built into the language</li>
+            <li>Green flags: Immutable, timezone-native, no library needed</li>
+          </ul>
+        </div>
+        <pre><code data-trim data-noescape class="language-javascript">
+// No import. It's just... there.
+
+const valentines = Temporal.PlainDate.from('2026-02-14');
+const dayAfter = valentines.add({ days: 1 }); // Immutable, of course
+valentines.toLocaleString('en-US', { dateStyle: 'long' });
+// "February 14, 2026"
+
+// Separate types for dates, times, and datetimes. Finally.
+const time = Temporal.PlainTime.from('19:30');
+const zoned = Temporal.ZonedDateTime.from('2026-02-14T19:30[America/Chicago]');
+        </code></pre>
+        <aside class="notes">
+          Temporal is the endgame. It's a TC39 proposal (Stage 3) that builds
+          everything the library ecosystem taught us directly into JavaScript.
+          Immutable, separate types for dates vs times vs zoned datetimes,
+          first-class timezone support. The catch? It's not in all browsers yet.
+          Polyfills exist but are heavy. Keep your eye on this one.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Comparison Table -->
       <section>
         <h2>Compatibility Check</h2>
         <table class="comparison-table">
@@ -314,6 +346,7 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
               <th>date-fns</th>
               <th>Day.js</th>
               <th>Luxon</th>
+              <th>Temporal</th>
             </tr>
           </thead>
           <tbody>
@@ -323,10 +356,12 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
               <td>~2-10KB*</td>
               <td>~2KB</td>
               <td>~23KB</td>
+              <td>0KB</td>
             </tr>
             <tr>
               <td>Immutable</td>
               <td>No</td>
+              <td>Yes</td>
               <td>Yes</td>
               <td>Yes</td>
               <td>Yes</td>
@@ -337,12 +372,14 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
               <td>Yes</td>
               <td>Plugins</td>
               <td>No</td>
+              <td>N/A</td>
             </tr>
             <tr>
               <td>TypeScript</td>
               <td>@types</td>
               <td>Native</td>
               <td>@types</td>
+              <td>Native</td>
               <td>Native</td>
             </tr>
             <tr>
@@ -351,12 +388,14 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
               <td>Functional</td>
               <td>OOP chain</td>
               <td>OOP chain</td>
+              <td>OOP</td>
             </tr>
             <tr>
               <td>Timezones</td>
               <td>Plugin</td>
               <td>Separate pkg</td>
               <td>Plugin</td>
+              <td>Built-in</td>
               <td>Built-in</td>
             </tr>
             <tr>
@@ -365,6 +404,7 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
               <td>Active</td>
               <td>Active</td>
               <td>Active</td>
+              <td>Stage 3</td>
             </tr>
           </tbody>
         </table>
@@ -394,6 +434,10 @@ valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
         <div class="rec-card fragment">
           <strong>Starting fresh?</strong>
           <span class="arrow">&rarr;</span> date-fns or Day.js (both great modern choices)
+        </div>
+        <div class="rec-card fragment">
+          <strong>Playing the long game?</strong>
+          <span class="arrow">&rarr;</span> Temporal (the future, but not ready yet)
         </div>
         <div class="rec-card fragment">
           <strong>moment.js?</strong>
