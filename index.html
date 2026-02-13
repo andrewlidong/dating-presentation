@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Talk About Dating | West Monroe</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/blood.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <style>
+    :root {
+      --r-heading-color: #e74c6f;
+      --r-link-color: #e74c6f;
+      --r-link-color-hover: #ff6b8a;
+    }
+
+    .dating-profile {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #e74c6f;
+      border-radius: 12px;
+      padding: 0.8em 1.2em;
+      text-align: left;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .dating-profile h3 {
+      color: #e74c6f;
+      margin: 0 0 0.1em 0;
+      font-size: 0.9em;
+    }
+
+    .dating-profile .tagline {
+      font-style: italic;
+      color: #aaa;
+      font-size: 0.6em;
+      margin-bottom: 0.4em;
+    }
+
+    .dating-profile ul {
+      font-size: 0.55em;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    .dating-profile ul li {
+      margin: 0.15em 0;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .profile-grid .dating-profile {
+      max-width: none;
+      padding: 0.6em 0.8em;
+    }
+
+    .profile-grid .dating-profile h3 {
+      font-size: 0.7em;
+    }
+
+    .profile-grid .dating-profile .tagline {
+      font-size: 0.5em;
+    }
+
+    .profile-grid .dating-profile ul {
+      font-size: 0.45em;
+    }
+
+    .reveal pre code {
+      max-height: 420px;
+      font-size: 0.52em;
+      line-height: 1.4;
+    }
+
+    .comparison-table {
+      font-size: 0.5em;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th {
+      color: #e74c6f;
+      border-bottom: 2px solid #e74c6f;
+      padding: 0.4em 0.5em;
+      text-align: center;
+    }
+
+    .comparison-table td {
+      padding: 0.3em 0.5em;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-table tr td:first-child {
+      text-align: left;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .rec-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid #e74c6f;
+      border-radius: 0 8px 8px 0;
+      padding: 0.4em 0.8em;
+      margin: 0.4em auto;
+      max-width: 600px;
+      text-align: left;
+      font-size: 0.65em;
+    }
+
+    .rec-card strong {
+      color: #e74c6f;
+    }
+
+    .rec-card .arrow {
+      color: #ff6b8a;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section>
+        <h1>Let's Talk About Dating</h1>
+        <p><em>A Developer's Guide to Finding The One...<br>JavaScript Date Library</em></p>
+        <p style="font-size: 0.5em; color: #aaa; margin-top: 2em;">West Monroe &bull; 2026</p>
+        <aside class="notes">
+          So I'm here to talk about dating. [pause] ...JavaScript date libraries.
+          Get your minds out of the gutter.
+        </aside>
+      </section>
+
+      <!-- Slide 2: The Problem -->
+      <section>
+        <h2>We Need to Talk</h2>
+        <pre><code data-trim data-noescape class="language-javascript">
+// JavaScript's built-in Date is... complicated
+new Date('2026-02-14')    // Feb 13 or 14? Depends on timezone!
+new Date(2026, 1, 14)     // Month is 0-indexed. Of course.
+new Date('02/14/2026')    // Works in Chrome, breaks in Safari
+
+// It's not you, it's Date.
+        </code></pre>
+        <aside class="notes">
+          Like any bad relationship, the native Date object has red flags.
+          Zero-indexed months, timezone surprises, no built-in formatting.
+          We deserve better.
+        </aside>
+      </section>
+
+      <!-- Slide 3: The Dating Pool -->
+      <section>
+        <h2>The Dating Pool</h2>
+        <div class="profile-grid">
+          <div class="dating-profile fragment">
+            <h3>moment.js</h3>
+            <p class="tagline">"The Ex Everyone's Had" &bull; Est. 2011</p>
+          </div>
+          <div class="dating-profile fragment">
+            <h3>date-fns</h3>
+            <p class="tagline">"The One Your Friends Recommend" &bull; Est. 2014</p>
+          </div>
+          <div class="dating-profile fragment">
+            <h3>Day.js</h3>
+            <p class="tagline">"The Low-Maintenance One" &bull; Est. 2018</p>
+          </div>
+          <div class="dating-profile fragment">
+            <h3>Luxon</h3>
+            <p class="tagline">"The Sophisticated Rebound" &bull; Est. 2017</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Let me introduce tonight's contestants...
+        </aside>
+      </section>
+
+      <!-- Slide 4: moment.js -->
+      <section>
+        <h2>moment.js</h2>
+        <p><em>"We all dated this one first"</em></p>
+        <div class="dating-profile">
+          <h3>The High School Sweetheart</h3>
+          <ul>
+            <li>Status: It's complicated (deprecated)</li>
+            <li>Size: ~300KB &mdash; "a lot of baggage"</li>
+            <li>Red flags: Mutable, no tree-shaking, maintenance mode</li>
+          </ul>
+        </div>
+        <pre><code data-trim data-noescape class="language-javascript">
+import moment from 'moment'; // 300KB. Hope you're worth it.
+
+const valentines = moment('2026-02-14');
+valentines.add(1, 'day');   // Mutates! The original is gone forever
+valentines.format('MMMM Do YYYY'); // "February 15th 2026"
+
+// moment taught us what we want. But it's time to move on.
+        </code></pre>
+        <aside class="notes">
+          Moment was everyone's first date library. Great API, taught us what
+          good date manipulation looks like. But it's mutable, huge, and the
+          maintainers themselves said "please stop using us for new projects."
+        </aside>
+      </section>
+
+      <!-- Slide 5: date-fns -->
+      <section>
+        <h2>date-fns</h2>
+        <p><em>"Functional, independent, drama-free"</em></p>
+        <div class="dating-profile">
+          <h3>The One Your Friends Recommend</h3>
+          <ul>
+            <li>Status: Open to commitment (tree-shakeable)</li>
+            <li>Size: Import only what you need &mdash; ~2-10KB typical</li>
+            <li>Green flags: Pure functions, immutable, TypeScript native</li>
+          </ul>
+        </div>
+        <pre><code data-trim data-noescape class="language-javascript">
+import { format, addDays } from 'date-fns'; // Just what you need
+
+const valentines = new Date(2026, 1, 14);
+const dayAfter = addDays(valentines, 1);  // New date! Original untouched
+format(valentines, 'MMMM do, yyyy');      // "February 14th, 2026"
+
+// 200+ functions. Only pay for what you use.
+        </code></pre>
+        <aside class="notes">
+          date-fns is the functional programming answer to dates. No wrapper
+          object, just pure functions that take and return native Date objects.
+          Your bundler loves it because tree-shaking actually works.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Day.js -->
+      <section>
+        <h2>Day.js</h2>
+        <p><em>"Same great personality, 1/50th the baggage"</em></p>
+        <div class="dating-profile">
+          <h3>The Low-Maintenance One</h3>
+          <ul>
+            <li>Status: Ready to mingle (2KB)</li>
+            <li>Size: 2KB minified &mdash; "travels light"</li>
+            <li>Green flags: moment-compatible API, immutable, plugin system</li>
+          </ul>
+        </div>
+        <pre><code data-trim data-noescape class="language-javascript">
+import dayjs from 'dayjs'; // 2KB. That's it. That's the bundle.
+
+const valentines = dayjs('2026-02-14');
+const dayAfter = valentines.add(1, 'day'); // Immutable! Returns new
+valentines.format('MMMM D, YYYY');         // "February 14, 2026"
+
+// If moment was your ex, Day.js is the upgrade.
+        </code></pre>
+        <aside class="notes">
+          Day.js is basically the answer to "what if moment but tiny and
+          immutable?" Almost identical API. 2 kilobytes. If you're migrating
+          from moment, this is the least painful path.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Luxon -->
+      <section>
+        <h2>Luxon</h2>
+        <p><em>"Built by moment's creators. They learned from their mistakes."</em></p>
+        <div class="dating-profile">
+          <h3>The Sophisticated Rebound</h3>
+          <ul>
+            <li>Status: Committed (immutable by design)</li>
+            <li>Size: ~23KB &mdash; "carries weight, but it's all muscle"</li>
+            <li>Green flags: Built-in timezone &amp; Intl support, by the moment team</li>
+          </ul>
+        </div>
+        <pre><code data-trim data-noescape class="language-javascript">
+import { DateTime } from 'luxon'; // The redemption arc
+
+const valentines = DateTime.fromISO('2026-02-14');
+const dayAfter = valentines.plus({ days: 1 }); // Immutable
+valentines.toFormat('MMMM dd, yyyy');           // "February 14, 2026"
+
+// Native Intl support. No locale files to import.
+valentines.setLocale('fr').toFormat('MMMM dd'); // "février 14"
+        </code></pre>
+        <aside class="notes">
+          Luxon was built by the moment team as their "we know better now"
+          project. Immutable, relies on native Intl APIs for locales so no
+          extra bundle weight for internationalization.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Comparison Table -->
+      <section>
+        <h2>Compatibility Check</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>moment.js</th>
+              <th>date-fns</th>
+              <th>Day.js</th>
+              <th>Luxon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Size</td>
+              <td>~300KB</td>
+              <td>~2-10KB*</td>
+              <td>~2KB</td>
+              <td>~23KB</td>
+            </tr>
+            <tr>
+              <td>Immutable</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Tree-shake</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Plugins</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>TypeScript</td>
+              <td>@types</td>
+              <td>Native</td>
+              <td>@types</td>
+              <td>Native</td>
+            </tr>
+            <tr>
+              <td>API Style</td>
+              <td>OOP chain</td>
+              <td>Functional</td>
+              <td>OOP chain</td>
+              <td>OOP chain</td>
+            </tr>
+            <tr>
+              <td>Timezones</td>
+              <td>Plugin</td>
+              <td>Separate pkg</td>
+              <td>Plugin</td>
+              <td>Built-in</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>Maintenance</td>
+              <td>Active</td>
+              <td>Active</td>
+              <td>Active</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.4em; color: #aaa;">*tree-shaken import size</p>
+        <aside class="notes">
+          Here's the side-by-side. Notice everyone except moment is immutable
+          now. The industry learned. Tree-shaking is the big differentiator
+          for date-fns.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Recommendations -->
+      <section>
+        <h2>Who Should You Date?</h2>
+        <div class="rec-card fragment">
+          <strong>Migrating from moment?</strong>
+          <span class="arrow">&rarr;</span> Day.js (familiar API, easy switch)
+        </div>
+        <div class="rec-card fragment">
+          <strong>Bundle size is everything?</strong>
+          <span class="arrow">&rarr;</span> date-fns (tree-shake to just what you need)
+        </div>
+        <div class="rec-card fragment">
+          <strong>Heavy timezone / i18n needs?</strong>
+          <span class="arrow">&rarr;</span> Luxon (built-in Intl, no extras)
+        </div>
+        <div class="rec-card fragment">
+          <strong>Starting fresh?</strong>
+          <span class="arrow">&rarr;</span> date-fns or Day.js (both great modern choices)
+        </div>
+        <div class="rec-card fragment">
+          <strong>moment.js?</strong>
+          <span class="arrow">&rarr;</span> <span class="strikethrough">We need to have a talk...</span>
+        </div>
+        <aside class="notes">
+          There's no single "best" library — it depends on your use case.
+          But there IS a worst choice for new projects, and it rhymes
+          with "schmo-ment."
+        </aside>
+      </section>
+
+      <!-- Slide 10: Closing -->
+      <section>
+        <h2>Happy Dating!</h2>
+        <pre><code data-trim data-noescape class="language-javascript">
+// The best date is the one that doesn't break in production.
+
+import dayjs from 'dayjs';
+console.log(dayjs().format('[Today is] dddd[. Go home.]'));
+// "Today is Thursday. Go home."
+        </code></pre>
+        <p style="margin-top: 1em;"><em>Questions? Relationship advice? Date formatting help?</em></p>
+        <aside class="notes">
+          Thanks everyone. Remember: the best date library is the one your
+          whole team agrees on. Just like real relationships, consistency
+          matters more than perfection.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'slide',
+      plugins: [RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+</html>
